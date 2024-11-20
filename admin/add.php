@@ -1,27 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+ob_start();
+?>
+<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post" class="form-control">
+    <label for="">Libellé</label><input type="text" name="lib" class="form-control" id=""></br>
+    <label for="">Prix</label><input type="text" name="pu" class="form-control" id=""></br>
+    <label for="">Quantité</label><input type="text" class="form-control" name="qte" id=""></br>
+    <label for="">Description</label><textarea name="des" class="form-control" id=""></textarea></br>
+    <label for="">image</label><input type="text" name="img" class="form-control" id=""></br>
+    <label for="">En Promo</label><input type="text" class="form-control" value=0 name="pro" id=""></br>
+    <input type="submit" value="Ajouter" name="ok" class="btn btn-success btn-lg">
+</form>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-    <?php
-    require_once "../connexion.php";
-    $sql = "insert into produit values(NULL,'Cable VGA',2,100,
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, deleniti?',
-    'https://picsum.photos/200/200',0)";
-
-    $connexion = new connexion();
-    $pdo = $connexion->getConnexion();
-    $res = $pdo->exec($sql);
-    var_dump($res);
+<?php
+if (isset($_POST['ok'])) {
+    require_once "../classes/CRUD_produit.php";
+    $crud = new CRUD_Produit();
 
 
-    ?>
-</body>
+    // $res=$crud->add($produit);
 
-</html>
+
+}
+$contenu = ob_get_clean();
+$titre = "Ajout d'un produit";
+include "layout.php";
+
+
+
+
+
+?>
