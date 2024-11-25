@@ -1,6 +1,6 @@
 <?php
 require_once "produit.php";
-require_once "../connexion.php";
+require_once "connexion.php";
 class CRUD_Produit
 {
     private $pdo; // objet PDO
@@ -28,7 +28,13 @@ class CRUD_Produit
         $res = $this->pdo->exec($sql);
         return $res;
     }
-    public function  find($id) {}
+    public function  find($id)
+    {
+        $sql = "select * from produit where id=$id";
+        $res = $this->pdo->query($sql);
+        return $res->fetch(PDO::FETCH_NUM);
+    }
+
     public function findAll()
     {
         $sql = "select * from produit";

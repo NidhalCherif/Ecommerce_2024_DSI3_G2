@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Nos Produits
+                    <a class="nav-link active" href="../../controller/user/findAll.php">Nos Produits
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>

@@ -1,17 +1,19 @@
-    <?php
-    ob_start();
-    require_once "../classes/crud_produit.php";
-    $crud = new CRUD_Produit();
-    $LesProduits = $crud->findAll();
-    ?>
-    <table class="table">
+<?php
+ob_start();
+?>
+<table class="table" id="example">
+    <thead>
         <tr>
             <th>Identifiant</th>
             <th>Libellé</th>
             <th>Prix(DT)</th>
             <th>Quantité</th>
-            <th colspan=3>Action</th>
+            <th>Action</th>
+            <th></th>
+            <th></th>
         </tr>
+    </thead>
+    <tbody>
         <?php
         foreach ($LesProduits as  $Produit) {
         ?>
@@ -29,10 +31,10 @@
         <?php
         }
         ?>
-
-    </table>
-    <?php
-    $contenu = ob_get_clean();
-    $titre = "Liste des produits";
-    include "layout.php";
-    ?>s
+    </tbody>
+</table>
+<?php
+$contenu = ob_get_clean();
+$titre = "Liste des produits";
+include "layout.php";
+?>
